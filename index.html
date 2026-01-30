@@ -1,0 +1,1874 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bali Express Laundry - 24 Hour Laundry Service</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #009688;
+            --primary-dark: #00796B;
+            --primary-light: #B2DFDB;
+            --accent-color: #FF9800;
+            --text-dark: #333333;
+            --text-medium: #555555;
+            --text-light: #777777;
+            --white: #FFFFFF;
+            --bg-light: #F5F5F5;
+            --border-color: #E0E0E0;
+            --whatsapp-green: #25D366;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background-color: var(--white);
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Language Switcher */
+        .language-switcher {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            z-index: 101;
+        }
+
+        .lang-btn {
+            background-color: var(--white);
+            border: 1px solid var(--border-color);
+            border-radius: 20px;
+            padding: 5px 15px;
+            font-weight: 500;
+            font-size: 14px;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--white);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+        }
+
+        .logo {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 22px;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .logo i {
+            font-size: 28px;
+        }
+
+        nav {
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            font-size: 14px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--primary-color);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-dark);
+            cursor: pointer;
+        }
+
+        .mobile-nav {
+            display: none;
+            background-color: var(--white);
+            padding: 20px;
+            box-shadow: 0 5px 10px rgba(0,0,0,0.1);
+        }
+
+        .mobile-nav a {
+            display: block;
+            padding: 10px 0;
+            text-decoration: none;
+            color: var(--text-dark);
+            font-weight: 500;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        /* Social Media Icons */
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-left: 20px;
+        }
+
+        .social-icons a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background-color: var(--bg-light);
+            color: var(--primary-color);
+            transition: all 0.3s;
+        }
+
+        .social-icons a:hover {
+            background-color: var(--primary-color);
+            color: var(--white);
+            transform: translateY(-3px);
+        }
+
+        /* Hero Section */
+        .hero {
+            background-color: var(--bg-light);
+            padding: 40px 20px;
+            text-align: center;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hero h1 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 28px;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 16px;
+            color: var(--text-medium);
+            max-width: 700px;
+            margin: 0 auto 25px;
+        }
+
+        .hero-cta {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 12px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 14px;
+            text-decoration: none;
+            transition: all 0.3s;
+            white-space: nowrap;
+        }
+
+        .btn-primary {
+            background-color: var(--whatsapp-green);
+            color: var(--white);
+        }
+
+        .btn-primary:hover {
+            background-color: #128C7E;
+        }
+
+        .btn-secondary {
+            background-color: var(--white);
+            color: var(--primary-color);
+            border: 1px solid var(--primary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--primary-light);
+        }
+
+        /* Features */
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            padding: 30px 20px;
+            background-color: var(--white);
+        }
+
+        .feature {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 14px;
+            color: var(--text-medium);
+        }
+
+        .feature i {
+            color: var(--primary-color);
+            font-size: 20px;
+        }
+
+        /* Statistics Section */
+        .stats-section {
+            padding: 40px 20px;
+            background-color: var(--primary-dark);
+            color: var(--white);
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 36px;
+            color: var(--accent-color);
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            font-weight: 500;
+        }
+
+        /* About Section */
+        .about-section {
+            padding: 40px 20px;
+            background-color: var(--white);
+        }
+
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        /* Pricing Section */
+        .pricing {
+            padding: 40px 20px;
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 24px;
+            color: var(--primary-dark);
+            margin-bottom: 25px;
+            text-align: center;
+            position: relative;
+            padding-bottom: 10px;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background-color: var(--accent-color);
+        }
+
+        .pricing-category {
+            margin-bottom: 30px;
+        }
+
+        .category-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 18px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .pricing-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            background-color: var(--bg-light);
+            transition: transform 0.3s, box-shadow: 0.3s;
+        }
+
+        .pricing-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .item-details {
+            flex: 1;
+        }
+
+        .item-name {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+
+        .item-features {
+            font-size: 13px;
+            color: var(--text-medium);
+            line-height: 1.5;
+        }
+
+        .item-features ul {
+            margin-left: 20px;
+            margin-top: 5px;
+        }
+
+        .item-features li {
+            margin-bottom: 3px;
+        }
+
+        .item-action {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-left: 20px;
+        }
+
+        .item-price {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 16px;
+            color: var(--primary-color);
+            margin-bottom: 10px;
+            white-space: nowrap;
+        }
+
+        .order-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: var(--whatsapp-green);
+            color: var(--white);
+            border-radius: 30px;
+            padding: 10px 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+            transition: background-color 0.3s, transform 0.3s;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            white-space: nowrap;
+        }
+
+        .order-btn:hover {
+            background-color: #128C7E;
+            transform: scale(1.02);
+        }
+
+        /* Certifications Section */
+        .certifications {
+            padding: 40px 20px;
+            background-color: var(--bg-light);
+        }
+
+        .cert-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .cert-item {
+            text-align: center;
+            padding: 25px;
+            background-color: var(--white);
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .cert-icon {
+            font-size: 48px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .cert-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .cert-desc {
+            font-size: 13px;
+            color: var(--text-medium);
+        }
+
+        /* Testimonials Section */
+        .testimonials {
+            padding: 40px 20px;
+            background-color: var(--white);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .testimonial-card {
+            background-color: var(--bg-light);
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+        }
+
+        .testimonial-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .testimonial-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-right: 15px;
+        }
+
+        .testimonial-info h4 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 16px;
+            color: var(--text-dark);
+            margin-bottom: 5px;
+        }
+
+        .stars {
+            color: #FFC107;
+            font-size: 14px;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: var(--text-medium);
+            line-height: 1.6;
+        }
+
+        .testimonial-name {
+            margin-top: 15px;
+            font-size: 14px;
+            font-weight: 600;
+            color: var(--primary-dark);
+        }
+
+        .testimonial-location {
+            font-size: 13px;
+            color: var(--text-light);
+        }
+
+        /* How It Works */
+        .how-it-works {
+            background-color: var(--bg-light);
+            padding: 40px 20px;
+            text-align: center;
+        }
+
+        .steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .step {
+            flex: 1;
+            min-width: 150px;
+            max-width: 200px;
+        }
+
+        .step-icon {
+            width: 60px;
+            height: 60px;
+            background-color: var(--primary-color);
+            color: var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 15px;
+            font-size: 24px;
+        }
+
+        .step-title {
+            font-weight: 600;
+            margin-bottom: 5px;
+            color: var(--text-dark);
+        }
+
+        .step-description {
+            font-size: 13px;
+            color: var(--text-medium);
+        }
+
+        /* Contact Section */
+        .contact-section {
+            padding: 40px 20px;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+
+        .contact-card {
+            background-color: var(--bg-light);
+            padding: 25px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .contact-card i {
+            font-size: 32px;
+            color: var(--primary-color);
+            margin-bottom: 15px;
+        }
+
+        .contact-card h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--text-dark);
+        }
+
+        .contact-card p {
+            color: var(--text-medium);
+            margin-bottom: 15px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-dark);
+            color: var(--white);
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .footer-social {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .footer-social a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background-color: rgba(255,255,255,0.1);
+            color: var(--white);
+            transition: all 0.3s;
+        }
+
+        .footer-social a:hover {
+            background-color: var(--white);
+            color: var(--primary-dark);
+        }
+
+        .footer-nav {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .footer-nav a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 14px;
+            transition: opacity 0.3s;
+        }
+
+        .footer-nav a:hover {
+            opacity: 0.8;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 14px;
+        }
+
+        .contact-item i {
+            font-size: 18px;
+        }
+
+        .copyright {
+            font-size: 12px;
+            opacity: 0.8;
+        }
+
+        /* Modal/Popup Styles */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            overflow-y: auto;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background-color: var(--white);
+            width: 90%;
+            max-width: 600px;
+            margin: 40px auto;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: modalFadeIn 0.3s;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .modal-title {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 700;
+            font-size: 20px;
+            color: var(--primary-dark);
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: var(--text-medium);
+            font-size: 24px;
+            cursor: pointer;
+            transition: color 0.3s;
+        }
+
+        .modal-close:hover {
+            color: var(--text-dark);
+        }
+
+        .modal-body {
+            padding: 20px;
+            max-height: 70vh;
+            overflow-y: auto;
+        }
+
+        .modal-body h3 {
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            font-size: 18px;
+            color: var(--primary-dark);
+            margin-top: 20px;
+            margin-bottom: 10px;
+        }
+
+        .modal-body p {
+            color: var(--text-medium);
+            margin-bottom: 15px;
+            line-height: 1.7;
+        }
+
+        .modal-body ul {
+            margin-left: 20px;
+            margin-bottom: 15px;
+        }
+
+        .modal-body li {
+            color: var(--text-medium);
+            margin-bottom: 8px;
+            line-height: 1.7;
+        }
+
+        .modal-footer {
+            padding: 15px 20px;
+            border-top: 1px solid var(--border-color);
+            text-align: right;
+        }
+
+        .modal-close-btn {
+            background-color: var(--primary-color);
+            color: var(--white);
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .modal-close-btn:hover {
+            background-color: var(--primary-dark);
+        }
+
+        /* Bilingual Support */
+        .lang-en {
+            display: none;
+        }
+
+        body.english .lang-id {
+            display: none;
+        }
+
+        body.english .lang-en {
+            display: block;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .mobile-nav.active {
+                display: block;
+            }
+
+            .pricing-item {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .item-action {
+                align-items: center;
+                margin-left: 0;
+                margin-top: 15px;
+                width: 100%;
+            }
+
+            .item-price {
+                margin: 0 0 10px 0;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .cert-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 20px auto;
+            }
+
+            .modal-content {
+                margin: 40px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Language Switcher -->
+    <div class="language-switcher">
+        <button class="lang-btn" id="lang-toggle">
+            <i class="fas fa-globe"></i>
+            <span id="current-lang">ID</span>
+        </button>
+    </div>
+
+    <!-- Header & Navigation -->
+    <header>
+        <div class="header-content">
+            <div class="logo">
+                <i class="material-icons">local_laundry_service</i>
+                Bali Express Laundry
+            </div>
+            <nav>
+                <a href="#home" class="active">
+                    <span class="lang-id">Beranda</span>
+                    <span class="lang-en">Home</span>
+                </a>
+                <a href="#about">
+                    <span class="lang-id">Tentang Kami</span>
+                    <span class="lang-en">About Us</span>
+                </a>
+                <a href="#pricing">
+                    <span class="lang-id">Harga</span>
+                    <span class="lang-en">Pricing</span>
+                </a>
+                <a href="#testimonials">
+                    <span class="lang-id">Testimoni</span>
+                    <span class="lang-en">Testimonials</span>
+                </a>
+                <a href="#contact">
+                    <span class="lang-id">Kontak</span>
+                    <span class="lang-en">Contact</span>
+                </a>
+            </nav>
+            <div class="social-icons">
+                <a href="#" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" title="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" title="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+            <button class="mobile-menu-btn">
+                <i class="material-icons">menu</i>
+            </button>
+        </div>
+        <div class="mobile-nav">
+            <a href="#home">
+                <span class="lang-id">Beranda</span>
+                <span class="lang-en">Home</span>
+            </a>
+            <a href="#about">
+                <span class="lang-id">Tentang Kami</span>
+                <span class="lang-en">About Us</span>
+            </a>
+            <a href="#pricing">
+                <span class="lang-id">Harga</span>
+                <span class="lang-en">Pricing</span>
+            </a>
+            <a href="#testimonials">
+                <span class="lang-id">Testimoni</span>
+                <span class="lang-en">Testimonials</span>
+            </a>
+            <a href="#contact">
+                <span class="lang-id">Kontak</span>
+                <span class="lang-en">Contact</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <h1 class="lang-id">Solusi Laundry Cepat, Bersih, dan Terpercaya di Bali</h1>
+            <h1 class="lang-en">Fast, Clean, and Reliable Laundry Solution in Bali</h1>
+            
+            <p class="lang-id">Nikmati layanan laundry profesional 24 jam dengan hasil bersih, rapi, dan harum. Kami hadir untuk memudahkan hidup Anda setiap hari. Dari pakaian harian hingga kebutuhan khusus, kami siap memberikan hasil terbaik dengan harga yang bersahabat.</p>
+            <p class="lang-en">Enjoy professional 24-hour laundry service with clean, neat, and fragrant results. We are here to make your life easier every day. From daily clothes to special needs, we are ready to provide best results at affordable prices.</p>
+            
+            <div class="hero-cta">
+                <a href="https://wa.me/6285198504914?text=Welcome%20to%20Bali%20Express%20Laundry%20(Open%2024%20Hours)%0A%0APlease%20kindly%20fill%20in%20the%20following%20details%3A%0AName%3A%0APhone%20Number%3A%0AHotel%20Name%20%2F%20Location%3A%0ARoom%20Number%3A%0AService%3A%20Express%20Laundry%20(please%20fill%20in%20...%20hours)%0A%0AKindly%20share%20your%20location%20to%20facilitate%20the%20laundry%20pickup" class="btn btn-primary">
+                    <span class="lang-id">Pesan via WhatsApp</span>
+                    <span class="lang-en">Order via WhatsApp</span>
+                </a>
+                <a href="https://wa.me/6285198504914?text=Welcome%20to%20Bali%20Express%20Laundry%20(Open%2024%20Hours)%0A%0APlease%20kindly%20fill%20in%20the%20following%20details%3A%0AName%3A%0APhone%20Number%3A%0AHotel%20Name%20%2F%20Location%3A%0ARoom%20Number%3A%0AService%3A%20Express%20Laundry%20(please%20fill%20in%20...%20hours)%0A%0AKindly%20share%20your%20location%20to%20facilitate%20the%20laundry%20pickup" class="btn btn-secondary">
+                    <i class="material-icons">local_shipping</i>
+                    <span class="lang-id">Antar Jemput Gratis</span>
+                    <span class="lang-en">Free Pickup & Delivery</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features -->
+    <section class="features">
+        <div class="feature">
+            <i class="material-icons">access_time</i>
+            <span class="lang-id">Buka 24 Jam</span>
+            <span class="lang-en">Open 24 Hours</span>
+        </div>
+        <div class="feature">
+            <i class="material-icons">local_shipping</i>
+            <span class="lang-id">Antar Jemput Gratis</span>
+            <span class="lang-en">Free Pickup & Delivery</span>
+        </div>
+        <div class="feature">
+            <i class="material-icons">bolt</i>
+            <span class="lang-id">Layanan Express 2-12 Jam</span>
+            <span class="lang-en">Express Service 2-12 Hours</span>
+        </div>
+        <div class="feature">
+            <i class="material-icons">verified</i>
+            <span class="lang-id">Mesin Khusus Per Customer</span>
+            <span class="lang-en">Dedicated Machine Per Customer</span>
+        </div>
+    </section>
+
+    <!-- Statistics Section -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <div class="stat-number">5000+</div>
+                    <div class="stat-label">
+                        <span class="lang-id">Pelanggan Puas</span>
+                        <span class="lang-en">Satisfied Customers</span>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">
+                        <span class="lang-id">Tepat Waktu</span>
+                        <span class="lang-en">On-Time Delivery</span>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">
+                        <span class="lang-id">Layanan</span>
+                        <span class="lang-en">Service</span>
+                    </div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">100%</div>
+                    <div class="stat-label">
+                        <span class="lang-id">Garansi Kepuasan</span>
+                        <span class="lang-en">Satisfaction Guarantee</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="lang-id">Tentang Kami</span>
+                <span class="lang-en">About Us</span>
+            </h2>
+            <div class="about-content">
+                <div class="about-text">
+                    <p class="lang-id">Bali Express Laundry adalah layanan laundry profesional 24 jam di Bali, melayani penduduk lokal maupun wisatawan internasional. Kami mengkhususkan diri dalam laundry express premium dengan antar jemput gratis, memastikan pakaian Anda dibersihkan dengan cepat, aman, dan dengan perawatan terbaik.</p>
+                    <p class="lang-en">Bali Express Laundry is a 24-hour professional laundry service in Bali, serving both local residents and international travelers. We specialize in express premium laundry with free pickup and delivery, ensuring your clothes are cleaned quickly, safely, and with great care.</p>
+                    
+                    <p class="lang-id">Area layanan kami mencakup Seminyak, Canggu, Umalas, Denpasar, Sanur, dan Kuta, menjadikan kami pilihan terpercaya untuk layanan laundry cepat, andal, dan berkualitas tinggi di Bali.</p>
+                    <p class="lang-en">Our service areas include Seminyak, Canggu, Umalas, Denpasar, Sanur, and Kuta, making us a trusted choice for fast, reliable, and high-quality laundry services in Bali.</p>
+                    
+                    <p class="lang-id">Dengan mesin cuci modern dan deterjen berkualitas tinggi, kami menjamin pakaian Anda bersih, rapi, dan harum. Tim profesional kami berdedikasi untuk memberikan pengalaman terbaik bagi setiap pelanggan.</p>
+                    <p class="lang-en">With modern washing machines and high-quality detergents, we guarantee your clothes are clean, neat, and fragrant. Our professional team is dedicated to providing the best experience for every customer.</p>
+                </div>
+                <div class="about-image">
+                    <img src="https://sfile.chatglm.cn/images-ppt/f5e58fb097b0.jpg" alt="Bali Express Laundry">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certifications Section -->
+    <section class="certifications">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="lang-id">Sertifikasi & Keunggulan</span>
+                <span class="lang-en">Certifications & Excellence</span>
+            </h2>
+            <div class="cert-grid">
+                <div class="cert-item">
+                    <i class="material-icons cert-icon">verified</i>
+                    <div class="cert-title">
+                        <span class="lang-id">Layanan Profesional</span>
+                        <span class="lang-en">Professional Service</span>
+                    </div>
+                    <div class="cert-desc">
+                        <span class="lang-id">Tim terlatih dengan standar kebersihan tinggi</span>
+                        <span class="lang-en">Trained team with high cleanliness standards</span>
+                    </div>
+                </div>
+                <div class="cert-item">
+                    <i class="material-icons cert-icon">eco</i>
+                    <div class="cert-title">
+                        <span class="lang-id">Deterjen Ramah Lingkungan</span>
+                        <span class="lang-en">Eco-Friendly Detergents</span>
+                    </div>
+                    <div class="cert-desc">
+                        <span class="lang-id">Produk aman untuk pakaian dan kulit Anda</span>
+                        <span class="lang-en">Safe products for your clothes and skin</span>
+                    </div>
+                </div>
+                <div class="cert-item">
+                    <i class="material-icons cert-icon">schedule</i>
+                    <div class="cert-title">
+                        <span class="lang-id">Tepat Waktu</span>
+                        <span class="lang-en">Always On Time</span>
+                    </div>
+                    <div class="cert-desc">
+                        <span class="lang-id">Pengantaran sesuai jadwal yang disepakati</span>
+                        <span class="lang-en">Delivery according to agreed schedule</span>
+                    </div>
+                </div>
+                <div class="cert-item">
+                    <i class="material-icons cert-icon">thumb_up</i>
+                    <div class="cert-title">
+                        <span class="lang-id">Jaminan Kepuasan</span>
+                        <span class="lang-en">Satisfaction Guarantee</span>
+                    </div>
+                    <div class="cert-desc">
+                        <span class="lang-id">Kepuasan pelanggan adalah prioritas kami</span>
+                        <span class="lang-en">Customer satisfaction is our priority</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="pricing">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="lang-id">Harga Laundry Express</span>
+                <span class="lang-en">Express Laundry Pricing</span>
+            </h2>
+            
+            <div class="pricing-category">
+                <h3 class="category-title">
+                    <span class="lang-id">Layanan Express</span>
+                    <span class="lang-en">Express Services</span>
+                </h3>
+                
+                <div class="pricing-item">
+                    <div class="item-details">
+                        <h4 class="item-name">Express 12 Jam / Express 12 Hours</h4>
+                        <div class="item-features">
+                            <ul>
+                                <li>
+                                    <span class="lang-id">Pengerjaan dalam 12 jam</span>
+                                    <span class="lang-en">12 Hours Turnaround</span>
+                                </li>
+                                <li>
+                                    <span class="lang-id">Antar jemput gratis</span>
+                                    <span class="lang-en">Free Pickup & Delivery</span>
+                                </li>
+                                <li>
+                                    <span class="lang-id">Termasuk: cuci, setrika, lipat rapi</span>
+                                    <span class="lang-en">Includes: wash, iron, fold neatly</span>
+                                </li>
+                                <li>
+                                    <span class="lang-id">Mesin khusus per pelanggan</span>
+                                    <span class="lang-en">Dedicated Machine Per Customer</span>
+                                </li>
+                                <li>
+                                    <span class="lang-id">Minimum: 3.9 kg</span>
+                                    <span class="lang-en">Minimum: 3.9 kg</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="item-action">
+                        <div class="item-price">Rp24.900/kg</div>
+                        <a href="https://wa.me/6285198504914?text=Welcome%20to%20Bali%20Express%20Laundry%20(Open%2024%20Hours)%0A%0APlease%20kindly%20fill%20in%20the%20following%20details%3A%0AName%3A%0APhone%20Number%3A%0AHotel%20Name%20%2F%20Location%3A%0ARoom%20Number%3A%0AService%3A%20Express%20Laundry%2012%20Hours%0A%0AKindly%20share%20your%20location%20to%20facilitate%20the%20laundry%20pickup" class="order-btn">
+                            <span class="lang-id">ORDER NOW</span>
+                            <span class="lang-en">ORDER NOW</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="pricing-item">
+                    <div class="item-details">
+                        <h4 class="item-name">Express 6 Jam / Express 6 Hours</h4>
+                        <div class="item-features">
+                            <ul>
+                                <li>
+                                    <span class="lang-id">Pengerjaan dalam 6 jam</span>
+                                    <span class="lang-en">6 Hours Turnaround</span>
+                                </li>
+                                <li>
+                                    <span class="lang-id">Antar jemput gratis</span>
+                                    <span class="lang-en">Free Pickup & Delivery</span>
+                                </li>
+                                <li>
+                                    <span class="lang-id">Termasuk: cuci, setrika, lipat rapi</span>
+                                    <span class="lang-en">Includes: wash, iron, fold neatly</span>
+                                </li>
+                                <li>
+                                    <span class="lang-id">Mesin khusus per pelanggan</span>
+                                    <span class="lang-en">Dedicated Machine Per Customer</span>
+                                </li>
+                                <li>
+                                    <span class="lang-id">Minimum: 3 kg</span>
+                                    <span class="lang-en">Minimum: 3 kg</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="item-action">
+                        <div class="item-price">Rp39.900/kg</div>
+                        <a href="https://wa.me/6285198504914?text=Welcome%20to%20Bali%20Express%20Laundry%20(Open%2024%20Hours)%0A%0APlease%20kindly%20fill%20in%20the%20following%20details%3A%0AName%3A%0APhone%20Number%3A%0AHotel%20Name%20%2F%20Location%3A%0ARoom%20Number%3A%0AService%3A%20Express%20Laundry%206%20Hours%0A%0AKindly%20share%20your%20location%20to%20facilitate%20the%20laundry%20pickup" class="order-btn">
+                            <span class="lang-id">ORDER NOW</span>
+                            <span class="lang-en">ORDER NOW</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="pricing-item">
+                    <div class="item-details">
+                        <h4 class="item-name">Express 3 Jam / Express 3 Hours</h4>
+                        <div class="item-features">
+                            <ul>
+                                <li>
+                                    <span class="lang-id">Pengerjaan dalam 3 jam</span>
+                                    <span class="lang-en">3 Hours Turnaround</span>
+                                </li>
+                                <li>
+                                    <span class="lang-id">Antar jemput gratis</span>
+                                    <span class="lang-en">Free Pickup & Delivery</span>
+                                </li>
+                                <li>
+                                    <span class="lang-id">Termasuk: cuci, setrika, lipat rapi</span>
+                                    <span class="lang-en">Includes: wash, iron, fold neatly</span>
+                                </li>
+                                <li>
+                                    <span class="lang-id">Mesin khusus per pelanggan</span>
+                                    <span class="lang-en">Dedicated Machine Per Customer</span>
+                                </li>
+                                <li>
+                                    <span class="lang-id">Minimum: 2 kg</span>
+                                    <span class="lang-en">Minimum: 2 kg</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="item-action">
+                        <div class="item-price">Rp49.900/kg</div>
+                        <a href="https://wa.me/6285198504914?text=Welcome%20to%20Bali%20Express%20Laundry%20(Open%2024%20Hours)%0A%0APlease%20kindly%20fill%20in%20the%20following%20details%3A%0AName%3A%0APhone%20Number%3A%0AHotel%20Name%20%2F%20Location%3A%0ARoom%20Number%3A%0AService%3A%20Express%20Laundry%203%20Hours%0A%0AKindly%20share%20your%20location%20to%20facilitate%20the%20laundry%20pickup" class="order-btn">
+                            <span class="lang-id">ORDER NOW</span>
+                            <span class="lang-en">ORDER NOW</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="pricing-item">
+                    <div class="item-details">
+                        <h4 class="item-name">Ultra Express 2 Jam / Ultra Express 2 Hours</h4>
+                        <div class="item-features">
+                            <ul>
+                                <li>
+                                    <span class="lang-id">Pengerjaan dalam 2 jam</span>
+                                    <span class="lang-en">2 Hours Turnaround</span>
+                                </li>
+                                <li>
+                                    <span class="lang-id">Antar jemput gratis</span>
+                                    <span class="lang-en">Free Pickup & Delivery</span>
+                                </li>
+                                <li>
+                                    <span class="lang-id">Termasuk: cuci, setrika, lipat rapi</span>
+                                    <span class="lang-en">Includes: wash, iron, fold neatly</span>
+                                </li>
+                                <li>
+                                    <span class="lang-id">Mesin khusus per pelanggan</span>
+                                    <span class="lang-en">Dedicated Machine Per Customer</span>
+                                </li>
+                                <li>
+                                    <span class="lang-id">Minimum: 2 kg</span>
+                                    <span class="lang-en">Minimum: 2 kg</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="item-action">
+                        <div class="item-price">Rp59.900/kg</div>
+                        <a href="https://wa.me/6285198504914?text=Welcome%20to%20Bali%20Express%20Laundry%20(Open%2024%20Hours)%0A%0APlease%20kindly%20fill%20in%20the%20following%20details%3A%0AName%3A%0APhone%20Number%3A%0AHotel%20Name%20%2F%20Location%3A%0ARoom%20Number%3A%0AService%3A%20Express%20Laundry%20Ultra%20Express%202%20Hours%0A%0AKindly%20share%20your%20location%20to%20facilitate%20the%20laundry%20pickup" class="order-btn">
+                            <span class="lang-id">ORDER NOW</span>
+                            <span class="lang-en">ORDER NOW</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="pricing-item">
+                    <div class="item-details">
+                        <h4 class="item-name">Laundry Sepatu 24 Jam / Shoes Laundry 24 Hours</h4>
+                        <div class="item-features">
+                            <ul>
+                                <li>
+                                    <span class="lang-id">Pengerjaan dalam 24 jam</span>
+                                    <span class="lang-en">24 Hours Turnaround</span>
+                                </li>
+                                <li>
+                                    <span class="lang-id">Antar jemput gratis</span>
+                                    <span class="lang-en">Free Pickup & Delivery</span>
+                                </li>
+                                <li>
+                                    <span class="lang-id">Pencucian manual & pembersihan mendalam</span>
+                                    <span class="lang-en">Manual wash & Deep cleaning</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="item-action">
+                        <div class="item-price">Rp49.900/pasang</div>
+                        <a href="https://wa.me/6285198504914?text=Welcome%20to%20Bali%20Express%20Laundry%20(Open%2024%20Hours)%0A%0APlease%20kindly%20fill%20in%20the%20following%20details%3A%0AName%3A%0APhone%20Number%3A%0AHotel%20Name%20%2F%20Location%3A%0ARoom%20Number%3A%0AService%3A%20Express%20Laundry%20Shoes%20Laundry%0A%0AKindly%20share%20your%20location%20to%20facilitate%20the%20laundry%20pickup" class="order-btn">
+                            <span class="lang-id">ORDER NOW</span>
+                            <span class="lang-en">ORDER NOW</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="pricing-item">
+                    <div class="item-details">
+                        <h4 class="item-name">Cuci Bed Cover Express / Bed Cover Express Wash</h4>
+                        <div class="item-features">
+                            <ul>
+                                <li>
+                                    <span class="lang-id">Pengaturan air dan putaran yang tepat</span>
+                                    <span class="lang-en">Proper water and spin settings</span>
+                                </li>
+                                <li>
+                                    <span class="lang-id">Pengeringan aman untuk mencegah penyusutan atau kerusakan serat</span>
+                                    <span class="lang-en">Safe drying to prevent shrinkage or fiber damage</span>
+                                </li>
+                                <li>
+                                    <span class="lang-id">Pengerjaan express</span>
+                                    <span class="lang-en">Express processing</span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="item-action">
+                        <div class="item-price">Rp50.000/kg</div>
+                        <a href="https://wa.me/6285198504914?text=Welcome%20to%20Bali%20Express%20Laundry%20(Open%2024%20Hours)%0A%0APlease%20kindly%20fill%20in%20the%20following%20details%3A%0AName%3A%0APhone%20Number3A%0AHotel%20Name%20%2F%20Location%3A%0ARoom%20Number%3A%0AService%3A%20Express%20Bed%20Cover%20Express%0A%0AKindly%20share%20your%20location%20to%20facilitate%20the%20laundry%20pickup" class="order-btn">
+                            <span class="lang-id">ORDER NOW</span>
+                            <span class="lang-en">ORDER NOW</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How It Works -->
+    <section class="how-it-works">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="lang-id">Cara Pesan</span>
+                <span class="lang-en">How to Order</span>
+            </h2>
+            <div class="steps">
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="fab fa-whatsapp"></i>
+                    </div>
+                    <h3 class="step-title">
+                        <span class="lang-id">Hubungi Kami</span>
+                        <span class="lang-en">Contact Us</span>
+                    </h3>
+                    <p class="step-description">
+                        <span class="lang-id">Kontak via WhatsApp untuk pemesanan</span>
+                        <span class="lang-en">Contact via WhatsApp for ordering</span>
+                    </p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="material-icons">local_shipping</i>
+                    </div>
+                    <h3 class="step-title">
+                        <span class="lang-id">Penjemputan Gratis</span>
+                        <span class="lang-en">Free Pickup</span>
+                    </h3>
+                    <p class="step-description">
+                        <span class="lang-id">Kami jemput laundry Anda</span>
+                        <span class="lang-en">We pick up your laundry</span>
+                    </p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="material-icons">local_laundry_service</i>
+                    </div>
+                    <h3 class="step-title">
+                        <span class="lang-id">Proses Cuci</span>
+                        <span class="lang-en">Wash Process</span>
+                    </h3>
+                    <p class="step-description">
+                        <span class="lang-id">Pakaian dicuci dengan mesin khusus</span>
+                        <span class="lang-en">Clothes washed with dedicated machine</span>
+                    </p>
+                </div>
+                <div class="step">
+                    <div class="step-icon">
+                        <i class="material-icons">check_circle</i>
+                    </div>
+                    <h3 class="step-title">
+                        <span class="lang-id">Pengantaran</span>
+                        <span class="lang-en">Delivery</span>
+                    </h3>
+                    <p class="step-description">
+                        <span class="lang-id">Pakaian bersih diantar ke lokasi Anda</span>
+                        <span class="lang-en">Clean clothes delivered to your location</span>
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="container">
+            <h2 class="section-title">
+                <span class="lang-id">Hubungi Kami</span>
+                <span class="lang-en">Contact Us</span>
+            </h2>
+            <div class="contact-grid">
+                <div class="contact-card">
+                    <i class="fab fa-whatsapp"></i>
+                    <h3>WhatsApp</h3>
+                    <p>+62 851-9850-4914</p>
+                    <a href="https://wa.me/6285198504914?text=Welcome%20to%20Bali%20Express%20Laundry%20(Open%2024%20Hours)%0A%0APlease%20kindly%20fill%20in%20the%20following%20details%3A%0AName%3A%0APhone%20Number%3A%0AHotel%20Name%20%2F%20Location%3A%0ARoom%20Number%3A%0AService%3A%20Express%20Laundry%20(please%20fill%20in%20...%20hours)%0A%0AKindly%20share%20your%20location%20to%20facilitate%20the%20laundry%20pickup" class="order-btn">
+                        <span class="lang-id">ORDER NOW</span>
+                        <span class="lang-en">ORDER NOW</span>
+                    </a>
+                </div>
+                <div class="contact-card">
+                    <i class="material-icons">location_on</i>
+                    <h3>
+                        <span class="lang-id">Alamat</span>
+                        <span class="lang-en">Address</span>
+                    </h3>
+                    <p>Jl. Mertanadi No.92, Kerobokan Kelod, Kec. Kuta Utara, Kabupaten Badung, Bali 80361</p>
+                </div>
+                <div class="contact-card">
+                    <i class="material-icons">access_time</i>
+                    <h3>
+                        <span class="lang-id">Jam Operasional</span>
+                        <span class="lang-en">Operating Hours</span>
+                    </h3>
+                    <p>
+                        <span class="lang-id">24 Jam / 7 Hari</span>
+                        <span class="lang-en">24 Hours / 7 Days</span>
+                    </p>
+                </div>
+                <div class="contact-card">
+                    <i class="material-icons">map</i>
+                    <h3>
+                        <span class="lang-id">Area Layanan</span>
+                        <span class="lang-en">Service Area</span>
+                    </h3>
+                    <p>Seminyak, Canggu, Umalas, Denpasar, Sanur, Kuta</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-social">
+                <a href="#" title="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
+                <a href="#" title="Facebook">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="#" title="WhatsApp">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+            </div>
+            <div class="footer-nav">
+                <a href="#home">
+                    <span class="lang-id">Beranda</span>
+                    <span class="lang-en">Home</span>
+                </a>
+                <a href="#about">
+                    <span class="lang-id">Tentang Kami</span>
+                    <span class="lang-en">About Us</span>
+                </a>
+                <a href="#pricing">
+                    <span class="lang-id">Harga</span>
+                    <span class="lang-en">Pricing</span>
+                </a>
+                <a href="#contact">
+                    <span class="lang-id">Kontak</span>
+                    <span class="lang-en">Contact</span>
+                </a>
+                <a href="#" id="privacy-link-footer">
+                    <span class="lang-id">Kebijakan Privasi</span>
+                    <span class="lang-en">Privacy Policy</span>
+                </a>
+                <a href="#" id="terms-link-footer">
+                    <span class="lang-id">Syarat & Ketentuan</span>
+                    <span class="lang-en">Terms of Service</span>
+                </a>
+            </div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>+62 851-9850-4914</span>
+                </div>
+                <div class="contact-item">
+                    <i class="material-icons">location_on</i>
+                    <span>Jl. Mertanadi No.92, Kerobokan Kelod, Kec. Kuta Utara, Kabupaten Badung, Bali 80361</span>
+                </div>
+                <div class="contact-item">
+                    <i class="material-icons">access_time</i>
+                    <span class="lang-id">Buka 24 Jam</span>
+                    <span class="lang-en">Open 24 Hours</span>
+                </span>
+                </div>
+            </div>
+            <p class="copyright">
+                <span class="lang-id">© 2024 Bali Express Laundry. Melayani Seminyak, Canggu, Umalas, Denpasar, Sanur, Kuta</span>
+                <span class="lang-en">© 2024 Bali Express Laundry. Serving Seminyak, Canggu, Umalas, Denpasar, Sanur, Kuta.</span>
+            </p>
+        </div>
+    </footer>
+
+    <!-- Privacy Policy Modal -->
+    <div id="privacy-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">
+                    <span class="lang-id">Kebijakan Privasi</span>
+                    <span class="lang-en">Privacy Policy</span>
+                </h3>
+                <button class="modal-close" id="privacy-close">×</button>
+            </div>
+            <div class="modal-body">
+                <p class="lang-id">Di Bali Express Laundry, kami menghargai privasi Anda dan berkomitmen untuk melindungi informasi pribadi Anda. Kebijakan Privasi ini menjelaskan bagaimana kami mengumpulkan, menggunakan, dan menjaga informasi Anda saat menggunakan layanan laundry kami.</p>
+                <p class="lang-en">At Bali Express Laundry, we value your privacy and are committed to protecting your personal information. This Privacy Policy explains how we collect, use, and safeguard your information when you use our laundry services.</p>
+                
+                <h3 class="lang-id">Informasi yang Kami Kumpulkan</h3>
+                <h3 class="lang-en">Information We Collect</h3>
+                <p class="lang-id">Kami mungkin mengumpulkan jenis informasi pribadi berikut:</p>
+                <p class="lang-en">We may collect following types of personal information:</p>
+                <ul>
+                    <li>
+                        <span class="lang-id">Nama dan informasi kontak (nomor telepon, WhatsApp)</span>
+                        <span class="lang-en">Name and contact information (phone number, WhatsApp)</span>
+                    </li>
+                    <li>
+                        <span class="lang-id">Informasi lokasi (nama hotel, nomor kamar, alamat)</span>
+                        <span class="lang-en">Location information (hotel name, room number, address)</span>
+                    </li>
+                    <li>
+                        <span class="lang-id">Preferensi layanan dan detail pesanan</span>
+                        <span class="lang-en">Service preferences and order details</span>
+                    </li>
+                </ul>
+                
+                <h3 class="lang-id">Cara Kami Menggunakan Informasi Anda</h3>
+                <h3 class="lang-en">How We Use Your Information</h3>
+                <p class="lang-id">Kami menggunakan informasi pribadi Anda untuk:</p>
+                <p class="lang-en">We use your personal information to:</p>
+                <ul>
+                    <li>
+                        <span class="lang-id">Menyediakan layanan laundry sesuai permintaan</span>
+                        <span class="lang-en">Provide laundry services as requested</span>
+                    </li>
+                    <li>
+                        <span class="lang-id">Memproses pesanan dan pembayaran</span>
+                        <span class="lang-en">Process orders and payments</span>
+                    </li>
+                    <li>
+                        <span class="lang-id">Mengatur penjemputan dan pengantaran laundry</span>
+                        <span class="lang-en">Arrange pickup and delivery of laundry</span>
+                    </li>
+                    <li>
+                        <span class="lang-id">Berkomunikasi dengan Anda tentang pesanan Anda</span>
+                        <span class="lang-en">Communicate with you about your orders</span>
+                    </li>
+                    <li>
+                        <span class="lang-id">Meningkatkan layanan kami</span>
+                        <span class="lang-en">Improve our services</span>
+                    </li>
+                </ul>
+                
+                <h3 class="lang-id">Berbagi Informasi</h3>
+                <h3 class="lang-en">Information Sharing</h3>
+                <p class="lang-id">Kami tidak menjual, memperdagangkan, atau menyewakan informasi pribadi Anda kepada pihak ketiga. Kami mungkin berbagi informasi Anda hanya dengan:</p>
+                <p class="lang-en">We do not sell, trade, or rent your personal information to third parties. We may share your information only with:</p>
+                <ul>
+                    <li>
+                        <span class="lang-id">Karyawan kami yang membutuhkan informasi untuk melakukan tugas mereka</span>
+                        <span class="lang-en">Our employees who need information to perform their job duties</span>
+                    </li>
+                    <li>
+                        <span class="lang-id">Penyedia layanan yang membantu kami mengoperasikan bisnis kami</span>
+                        <span class="lang-en">Service providers who assist us in operating our business</span>
+                    </li>
+                    <li>
+                        <span class="lang-id">Saat diwajibkan oleh hukum</span>
+                        <span class="lang-en">When required by law</span>
+                    </li>
+                </ul>
+                
+                <h3 class="lang-id">Keamanan Data</h3>
+                <h3 class="lang-en">Data Security</h3>
+                <p class="lang-id">Kami menerapkan langkah keamanan yang tepat untuk melindungi informasi pribadi Anda terhadap akses tidak sah, perubahan, pengungkapan, atau penghancuran.</p>
+                <p class="lang-en">We implement appropriate security measures to protect your personal information against unauthorized access, alteration, disclosure, or destruction.</p>
+                
+                <h3 class="lang-id">Hak Privasi Anda</h3>
+                <h3 class="lang-en">Your Privacy Rights</h3>
+                <p class="lang-id">Anda memiliki hak untuk mengakses, memperbaiki, atau menghapus informasi pribadi Anda. Untuk melaksanakan hak ini, silakan hubungi kami melalui informasi yang disediakan di bagian Kontak.</p>
+                <p class="lang-en">You have right to access, correct, or delete your personal information. To exercise these rights, please contact us through information provided in Contact section.</p>
+                
+                <h3 class="lang-id">Perubahan pada Kebijakan Ini</h3>
+                <h3 class="lang-en">Changes to This Policy</h3>
+                <p class="lang-id">Kami mungkin memperbarui Kebijakan Privasi ini dari waktu ke waktu. Kami akan memberi tahu Anda tentang perubahan apa pun dengan memposting kebijakan baru di halaman ini.</p>
+                <p class="lang-en">We may update this Privacy Policy from time to time. We will notify you of any changes by posting new policy on this page.</p>
+                
+                <p class="lang-id">Terakhir diperbarui: 30 Januari 2026</p>
+                <p class="lang-en">Last updated: January 30, 2026</p>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-close-btn" id="privacy-close-btn">
+                    <span class="lang-id">Tutup</span>
+                    <span class="lang-en">Close</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terms of Service Modal -->
+    <div id="terms-modal" class="modal-overlay">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">
+                    <span class="lang-id">Syarat & Ketentuan</span>
+                    <span class="lang-en">Terms of Service</span>
+                </h3>
+                <button class="modal-close" id="terms-close">×</button>
+            </div>
+            <div class="modal-body">
+                <p class="lang-id">Selamat datang di Bali Express Laundry. Dengan menggunakan layanan laundry kami, Anda setuju untuk mematuhi dan terikat oleh Syarat & Ketentuan berikut.</p>
+                <p class="lang-en">Welcome to Bali Express Laundry. By using our laundry services, you agree to comply with and be bound by following Terms of Service.</p>
+                
+                <h3 class="lang-id">Layanan</h3>
+                <p class="lang-en">Bali Express Laundry provides express laundry services including washing, drying, ironing, and folding. We reserve right to modify, suspend, or discontinue any service at any time without prior notice.</p>
+                
+                <h3 class="lang-id">Pesanan dan Pembayaran</h3>
+                <ul>
+                    <li>
+                        <span class="lang-id">Semua pesanan tunduk pada ketersediaan dan penerimaan oleh Bali Express Laundry.</span>
+                        <span class="lang-en">All orders are subject to availability and acceptance by Bali Express Laundry.</span>
+                    </li>
+                    <li>
+                        <span class="lang-id">Harga untuk layanan kami terdaftar di website kami dan dapat berubah tanpa pemberitahuan.</span>
+                        <span class="lang-en">Prices for our services are as listed on our website and are subject to change without notice.</span>
+                    </li>
+                    <li>
+                        <span class="lang-id">Pembayaran jatuh tempo saat pengiriman laundry bersih kecuali pengaturan lain telah dibuat.</span>
+                        <span class="lang-en">Payment is due upon delivery of clean laundry unless other arrangements have been made.</span>
+                    </li>
+                    <li>
+                        <span class="lang-id">Persyaratan pesanan minimum berlaku untuk setiap tingkat layanan seperti yang ditentukan di halaman harga kami.</span>
+                        <span class="lang-en">Minimum order requirements apply for each service tier as specified on our pricing page.</span>
+                    </li>
+                </ul>
+                
+                <h3 class="lang-id">Penjemputan dan Pengantaran</h3>
+                <ul>
+                    <li>
+                        <span class="lang-id">Kami menawarkan penjemputan dan pengantaran gratis dalam area layanan kami.</span>
+                        <span class="lang-en">We offer free pickup and delivery within our service areas.</span>
+                    </li>
+                    <li>
+                        <span class="lang-id">Pelanggan harus memastikan bahwa seseorang tersedia di lokasi yang ditentukan untuk penjemputan dan pengantaran.</span>
+                        <span class="lang-en">Customers must ensure that someone is available at specified location for pickup and delivery.</span>
+                    </li>
+                    <li>
+                        <span class="lang-id">Kami tidak bertanggung jawab atas barang yang ditinggalkan tanpa pengawasan di lokasi penjemputan atau pengantaran.</span>
+                        <span class="lang-en">We are not responsible for items left unattended at pickup or delivery locations.</span>
+                    </li>
+                    <li>
+                        <span class="lang-id">Waktu pengantaran adalah perkiraan dan tidak dijamin.</span>
+                        <span class="lang-en">Delivery times are estimates and not guaranteed.</span>
+                    </li>
+                </ul>
+                
+                <h3 class="lang-id">Tanggung Jawab Pelanggan</h3>
+                <h3 class="lang-en">Customer Responsibilities</h3>
+                <ul>
+                    <li>
+                        <span class="lang-id">Pelanggan harus memastikan semua barang cocok untuk metode pembersihan yang dipilih.</span>
+                        <span class="lang-en">Customers must ensure all items are suitable for selected cleaning method.</span>
+                    </li>
+                    <li>
+                        <span class="lang-id">Pelanggan harus mengosongkan semua saku dan menghapus semua barang berharga sebelum menyerahkan barang untuk dibersihkan.</span>
+                        <span class="lang-en">Customers should empty all pockets and remove all valuables before handing over items for cleaning.</span>
+                    </li>
+                    <li>
+                        <span class="lang-id">Kami tidak bertanggung jawab atas kerusakan barang yang disebabkan oleh kondisi yang sudah ada, cacat manufaktur, atau perawatan yang tidak tepat oleh pelanggan.</span>
+                        <span class="lang-en">We are not responsible for damage to items caused by pre-existing conditions, manufacturing defects, or improper care by customer.</span>
+                    </li>
+                </ul>
+                
+                <h3 class="lang-id">Batasan Tanggung Jawab</h3>
+                <h3 class="lang-en">Limitation of Liability</h3>
+                <p class="lang-id">Bali Express Laundry tidak akan bertanggung jawab atas kerusakan tidak langsung, insidental, khusus, konsekuensial, atau hukuman, termasuk tanpa batasan, kehilangan keuntungan, data, penggunaan, niat baik, atau kerugian tak berwujud lainnya.</p>
+                <p class="lang-en">Bali Express Laundry shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses.</p>
+                
+                <h3 class="lang-id">Ganti Rugi</h3>
+                <h3 class="lang-en">Indemnification</h3>
+                <p class="lang-id">Anda setuju untuk mengganti rugi dan menjaga Bali Express Laundry dari klaim apa pun yang timbul dari penggunaan layanan kami.</p>
+                <p class="lang-en">You agree to indemnify and hold harmless Bali Express Laundry from any claims resulting from your use of our services.</p>
+                
+                <h3 class="lang-id">Hukum yang Mengatur</h3>
+                <h3 class="lang-en">Governing Law</h3>
+                <p class="lang-id">Syarat & Ketentuan Layanan ini akan diatur dan ditafsirkan sesuai dengan hukum Indonesia. Setiap perselisihan yang timbul di bawah ketentuan ini akan tunduk pada yurisdiksi eksklusif pengadilan Bali, Indonesia.</p>
+                <p class="lang-en">These Terms of Service shall be governed by and construed in accordance with laws of Indonesia. Any disputes arising under these terms shall be subject to exclusive jurisdiction of courts of Bali, Indonesia.</p>
+                
+                <h3 class="lang-id">Perubahan Syarat</h3>
+                <h3 class="lang-en">Changes to Terms</h3>
+                <p class="lang-id">Kami berhak memodifikasi Syarat & Ketentuan Layanan ini kapan saja. Kami akan memberi tahu pengguna tentang perubahan apa pun dengan memposting ketentuan baru di halaman ini.</p>
+                <p class="lang-en">We reserve right to modify these Terms of Service at any time. We will notify users of any changes by posting new terms on this page.</p>
+                
+                <p class="lang-id">Terakhir diperbarui: 30 Januari 2026</p>
+                <p class="lang-en">Last updated: January 30, 2026</p>
+            </div>
+            <div class="modal-footer">
+                <button class="modal-close-btn" id="terms-close-btn">
+                    <span class="lang-id">Tutup</span>
+                    <span class="lang-en">Close</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Language toggle functionality
+        const langToggle = document.getElementById('lang-toggle');
+        const currentLangSpan = document.getElementById('current-lang');
+        let currentLang = 'id'; // Default language is Indonesian
+
+        langToggle.addEventListener('click', () => {
+            if (currentLang === 'id') {
+                document.body.classList.add('english');
+                currentLangSpan.textContent = 'EN';
+                currentLang = 'en';
+            } else {
+                document.body.classList.remove('english');
+                currentLangSpan.textContent = 'ID';
+                currentLang = 'id';
+            }
+        });
+
+        // Mobile menu toggle
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const mobileNav = document.querySelector('.mobile-nav');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileNav.classList.toggle('active');
+        });
+
+        // Close mobile menu when clicking a link
+        const mobileNavLinks = document.querySelectorAll('.mobile-nav a');
+        mobileNavLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileNav.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                const targetId = this.getAttribute('href');
+                if (targetId.startsWith('#') && targetId !== '#' && 
+                    !this.id.includes('privacy-link') && 
+                    !this.id.includes('terms-link')) {
+                    e.preventDefault();
+                    const targetElement = document.querySelector(targetId);
+                    
+                    if (targetElement) {
+                        window.scrollTo({
+                            top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // Active navigation link highlighting
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('nav a');
+            
+            let currentSection = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (window.pageYOffset >= (sectionTop - 100)) {
+                    currentSection = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${currentSection}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Modal functionality
+        const privacyModal = document.getElementById('privacy-modal');
+        const termsModal = document.getElementById('terms-modal');
+        
+        // Privacy Policy modal
+        document.getElementById('privacy-link').addEventListener('click', (e) => {
+            e.preventDefault();
+            privacyModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        });
+        
+        document.getElementById('privacy-link-footer').addEventListener('click', (e) => {
+            e.preventDefault();
+            privacyModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        });
+        
+        document.getElementById('privacy-close').addEventListener('click', () => {
+            privacyModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+        
+        document.getElementById('privacy-close-btn').addEventListener('click', () => {
+            privacyModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Terms of Service modal
+        document.getElementById('terms-link').addEventListener('click', (e => {
+            e.preventDefault();
+            termsModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        });
+        
+        document.getElementById('terms-link-footer').addEventListener('click', (e) => {
+            e.preventDefault();
+            termsModal.style.display = 'block';
+            document.body.style.overflow = 'hidden';
+        });
+        
+        document.getElementById('terms-close').addEventListener('click', () => {
+            termsModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+        
+        document.getElementById('terms-close-btn').addEventListener('click', () => {
+            termsModal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        });
+        
+        // Close modals when clicking outside
+        window.addEventListener('click', (e) => {
+            if (e.target === privacyModal) {
+                privacyModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+            if (e.target === termsModal) {
+                termsModal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            }
+        });
+    </script>
+</body>
+</html>
