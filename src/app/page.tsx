@@ -184,7 +184,7 @@ export default function Home() {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     name: 'Bali Express Laundry',
-    image: 'https://baliexpresslaundry.vercel.app/logo.png',
+    image: 'https://baliexpresslaundry.vercel.app/logo-compressed.png',
     description: 'Premium laundry service in Bali with 2-hour express turnaround. Free pickup & delivery across Seminyak, Canggu, Kuta & more. Open 24/7.',
     telephone: '+6285198504914',
     email: 'info@baliexpresslaundry.vercel.app',
@@ -278,8 +278,10 @@ export default function Home() {
             {/* Logo + Brand Name */}
             <a href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity duration-200">
               <img 
-                src="/logo.png" 
+                src="/logo-compressed.png" 
                 alt="Bali Express Laundry Logo" 
+                width={300}
+                height={158}
                 className="h-12 md:h-14"
               />
               <div className="block">
@@ -331,8 +333,10 @@ export default function Home() {
               {/* Mobile Brand */}
               <div className="flex items-center gap-2 mb-4">
                 <img 
-                  src="/logo.png" 
+                  src="/logo-compressed.png" 
                   alt="Bali Express Laundry Logo" 
+                  width={300}
+                  height={158}
                   className="h-10"
                 />
                 <h1 className="text-xl font-bold text-gray-900 leading-tight">
