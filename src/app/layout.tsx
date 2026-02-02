@@ -10,8 +10,8 @@ const inter = Inter({
 export const metadata: Metadata = {
   metadataBase: new URL("https://baliexpresslaundry.vercel.app"),
   icons: {
-    icon: '/logo-compressed.png',
-    apple: '/logo-compressed.png',
+    icon: '/logo.png',
+    apple: '/logo.png',
   },
   title: "Bali Express Laundry | 2-Hour Express Service in Bali | Free Pickup & Delivery",
   description: "Premium laundry service in Bali with 2-hour express turnaround. Free pickup & delivery across Seminyak, Canggu, Kuta & more. Open 24/7. WhatsApp: +62 851-9850-4914",
@@ -51,9 +51,9 @@ export const metadata: Metadata = {
     siteName: "Bali Express Laundry",
     images: [
       {
-        url: "https://baliexpresslaundry.vercel.app/logo-compressed.png",
-        width: 300,
-        height: 158,
+        url: "https://baliexpresslaundry.vercel.app/logo.png",
+        width: 1536,
+        height: 1024,
         alt: "Bali Express Laundry Logo"
       }
     ],
@@ -63,7 +63,7 @@ export const metadata: Metadata = {
     title: "Bali Express Laundry | 2-Hour Express Service in Bali",
     description: "Premium laundry service in Bali with 2-hour express turnaround. Free pickup & delivery across Seminyak, Canggu, Kuta & more. Open 24/7.",
     images: {
-      url: "https://baliexpresslaundry.vercel.app/logo-compressed.png",
+      url: "https://baliexpresslaundry.vercel.app/logo.png",
       alt: "Bali Express Laundry Logo"
     }
   },

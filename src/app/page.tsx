@@ -184,7 +184,7 @@ export default function Home() {
     '@context': 'https://schema.org',
     '@type': 'LocalBusiness',
     name: 'Bali Express Laundry',
-    image: 'https://baliexpresslaundry.vercel.app/logo-compressed.png',
+    image: 'https://baliexpresslaundry.vercel.app/logo.png',
     description: 'Premium laundry service in Bali with 2-hour express turnaround. Free pickup & delivery across Seminyak, Canggu, Kuta & more. Open 24/7.',
     telephone: '+6285198504914',
     email: 'info@baliexpresslaundry.vercel.app',
@@ -278,10 +278,11 @@ export default function Home() {
             {/* Logo + Brand Name */}
             <a href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity duration-200">
               <img 
-                src="/logo-compressed.png" 
+                src="/logo.png" 
                 alt="Bali Express Laundry Logo" 
                 width={300}
-                height={158}
+                height={200}
+                loading="eager"
                 className="h-12 md:h-14"
               />
               <div className="block">
@@ -333,10 +334,11 @@ export default function Home() {
               {/* Mobile Brand */}
               <div className="flex items-center gap-2 mb-4">
                 <img 
-                  src="/logo-compressed.png" 
+                  src="/logo.png" 
                   alt="Bali Express Laundry Logo" 
                   width={300}
-                  height={158}
+                  height={200}
+                  loading="eager"
                   className="h-10"
                 />
                 <h1 className="text-xl font-bold text-gray-900 leading-tight">
@@ -395,15 +397,18 @@ export default function Home() {
       <section 
         id="hero"
         className="relative min-h-screen flex items-center justify-center overflow-hidden"
-        style={{
-          backgroundImage: "url('/hero-bg.png')",
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat'
-        }}
       >
+        {/* Hero Background with Lazy Loading */}
+        <img
+          src="/hero-bg.png"
+          alt="Bali Express Laundry - Professional Laundry Service in Bali"
+          loading="lazy"
+          className="absolute inset-0 w-full h-full object-cover"
+          style={{ zIndex: 0 }}
+        />
+        
         {/* Dark overlay for text readability */}
-        <div className="absolute inset-0 bg-black/40" />
+        <div className="absolute inset-0 bg-black/40" style={{ zIndex: 1 }} />
 
         <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-20">
           <div className="max-w-5xl mx-auto text-center">
