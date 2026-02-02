@@ -69,6 +69,11 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://baliexpresslaundry.vercel.app",
   },
+  // Content Security Policy
+  securityHeaders: {
+    "Content-Security-Policy": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:*.gstatic.com https://*.googleapis.com; font-src 'self' data: https://*.gstatic.com https://*.googleapis.com; connect-src 'self' blob:; frame-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'self'; report-uri https://baliexpresslaundry.vercel.app/csp-violation;",
+    "X-Content-Security-Policy": "default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline';",
+  },
 };
 
 export default function RootLayout({
