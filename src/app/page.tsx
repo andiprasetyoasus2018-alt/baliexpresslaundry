@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useMemo } from 'react';
 import { 
   Clock, 
   Truck, 
@@ -29,14 +29,12 @@ const WHATSAPP_MESSAGE = encodeURIComponent(
 );
 
 export default function Home() {
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isTrustBadgeVisible, setIsTrustBadgeVisible] = useState(false);
   const trustBadgeRef = useRef<HTMLDivElement>(null);
   
   // Price Calculator State
   const [weight, setWeight] = useState<number>(5);
   const [selectedService, setSelectedService] = useState('express-12');
-  const [calculatedPrice, setCalculatedPrice] = useState<number>(0);
   
   // FAQ State
   const [openFaq, setOpenFaq] = useState<number | null>(null);
@@ -346,22 +344,22 @@ export default function Home() {
   }, []);
   
   // Price Calculator Logic
-  useEffect(() => {
-    const prices: Record<string, number> = {
-      'express-12': 24900,
-      'express-6': 39900,
-      'express-3': 49900,
-      'express-2': 59900
-    };
-    const minWeights: Record<string, number> = {
-      'express-12': 3.9,
-      'express-6': 3,
-      'express-3': 2,
-      'express-2': 2
-    };
-    
+  const prices: Record<string, number> = {
+    'express-12': 24900,
+    'express-6': 39900,
+    'express-3': 49900,
+    'express-2': 59900
+  };
+  const minWeights: Record<string, number> = {
+    'express-12': 3.9,
+    'express-6': 3,
+    'express-3': 2,
+    'express-2': 2
+  };
+
+  const calculatedPrice = useMemo(() => {
     const effectiveWeight = Math.max(weight, minWeights[selectedService] || 2);
-    setCalculatedPrice(effectiveWeight * prices[selectedService]);
+    return effectiveWeight * prices[selectedService];
   }, [weight, selectedService]);
 
   return (
@@ -370,115 +368,32 @@ export default function Home() {
       <header className="fixed top-0 left-0 right-0 z-50 bg-white/95 backdrop-blur-md shadow-md">
         <div className="container mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
-            {/* Logo + Brand Name */}
-            <a href="/" className="flex items-center gap-3 hover:opacity-80 transition-opacity duration-200">
-              <img 
-                src="/logo.png" 
-                alt="Bali Express Laundry Logo" 
-                width={300}
-                height={200}
-                loading="eager"
-                className="h-12 md:h-14"
-              />
-              <div className="block">
-                <h1 className="text-lg md:text-2xl lg:text-3xl font-bold text-gray-900 leading-tight">
-                  Bali Express Laundry
-                </h1>
-              </div>
+            {/* Business Name */}
+            <h1 className="text-xl md:text-2xl lg:text-3xl font-bold text-gray-900 leading-tight">
+              Bali Express Laundry
+            </h1>
+
+            {/* WhatsApp CTA - Most Important! */}
+            <a
+              href={whatsappUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white px-6 py-3 rounded-full font-bold shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105"
+            >
+              <Phone className="w-5 h-5" />
+              <span className="hidden sm:block">Order Now</span>
+              <span className="text-sm sm:hidden">WhatsApp Us</span>
             </a>
 
-            {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-6">
-              <a href="#services" onClick={handleSmoothScroll} className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
-                Services
-              </a>
-              <a href="#calculator" onClick={handleSmoothScroll} className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
-                Calculator
-              </a>
-              <a href="#how-it-works" onClick={handleSmoothScroll} className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
-                How It Works
-              </a>
-              <a href="#faq" onClick={handleSmoothScroll} className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
-                FAQ
-              </a>
-              <a href="#service-area" onClick={handleSmoothScroll} className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
-                Location
-              </a>
-              <a href="#contact" onClick={handleSmoothScroll} className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
-                Contact
-              </a>
-              <a
-                href={whatsappUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-5 py-2 rounded-full font-semibold transition-colors"
-              >
-                <Phone className="w-4 h-4" />
-                <span className="hidden lg:block">Order Now</span>
-              </a>
-            </nav>
-
-            {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-gray-700 hover:text-emerald-600 transition-colors"
-            >
-              {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile Menu */}
-        {isMobileMenuOpen && (
-          <div className="md:hidden bg-white border-t border-gray-200 shadow-lg">
-            <div className="container mx-auto px-4 sm:px-6 lg:px-8 py-4">
-              {/* Mobile Brand */}
-              <div className="flex items-center gap-2 mb-4">
-                <img 
-                  src="/logo.png" 
-                  alt="Bali Express Laundry Logo" 
-                  width={300}
-                  height={200}
-                  loading="eager"
-                  className="h-10"
-                />
-                <h1 className="text-xl font-bold text-gray-900 leading-tight">
-                  Bali Express Laundry
-                </h1>
-              </div>
-
-              <nav className="flex flex-col gap-4">
-                <a href="#services" onClick={(e) => { handleSmoothScroll(e); setIsMobileMenuOpen(false); }} className="text-gray-700 hover:text-emerald-600 font-medium transition-colors py-2">
-                  Services
-                </a>
-                <a href="#calculator" onClick={(e) => { handleSmoothScroll(e); setIsMobileMenuOpen(false); }} className="text-gray-700 hover:text-emerald-600 font-medium transition-colors py-2">
-                  Calculator
-                </a>
-                <a href="#how-it-works" onClick={(e) => { handleSmoothScroll(e); setIsMobileMenuOpen(false); }} className="text-gray-700 hover:text-emerald-600 font-medium transition-colors py-2">
-                  How It Works
-                </a>
-                <a href="#faq" onClick={(e) => { handleSmoothScroll(e); setIsMobileMenuOpen(false); }} className="text-gray-700 hover:text-emerald-600 font-medium transition-colors py-2">
-                  FAQ
-                </a>
-                <a href="#service-area" onClick={(e) => { handleSmoothScroll(e); setIsMobileMenuOpen(false); }} className="text-gray-700 hover:text-emerald-600 font-medium transition-colors py-2">
-                  Location
-                </a>
-                <a href="#contact" onClick={(e) => { handleSmoothScroll(e); setIsMobileMenuOpen(false); }} className="text-gray-700 hover:text-emerald-600 font-medium transition-colors py-2">
-                  Contact
-                </a>
-                <a
-                  href={whatsappUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-5 py-3 rounded-full font-semibold transition-colors justify-center"
-                >
-                  <Phone className="w-5 h-5" />
-                  Order Now
-                </a>
-              </nav>
+            {/* Phone Number */}
+            <div className="hidden md:flex items-center gap-2 text-gray-700">
+              <Phone className="w-4 h-4" />
+              <span className="text-sm md:text-base font-semibold">
+                +62 851-9850-4914
+              </span>
             </div>
           </div>
-        )}
+        </div>
       </header>
 
       {/* Spacer for fixed header */}
