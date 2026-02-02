@@ -7,9 +7,9 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
   reactStrictMode: false,
-
+  
   // Security headers
-  async headers() {
+  headers: async () => {
     return {
       'X-DNS-Prefetch-Control': 'on',
       'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
