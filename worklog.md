@@ -537,3 +537,61 @@ Expected Results:
 - More social proof with additional testimonials
 - Overall improved user experience and conversion potential
 
+
+---
+Task: Clean Up Header - Minimal and Focused
+
+Work Log:
+- User requested: "hapus foto logonya dan menu di header jangan terlalu banyak bro. kasih yang menurut kamu paling penting aja"
+- Translation: Remove logo and menu from header, don't do too much, just keep most important
+
+Analysis of Most Important Header Elements:
+1. WhatsApp CTA button - CRITICAL for conversion
+2. Phone number display - Trust + contact info
+3. Business name text - Branding
+
+Changes Made:
+
+Removed from header:
+- ❌ Logo image (visual clutter)
+- ❌ Navigation menu (Services, Calculator, FAQ, Location, Contact)
+- ❌ Mobile menu button
+- ❌ Entire mobile menu
+- ❌ Related state: isMobileMenuOpen, setIsMobileMenuOpen
+
+Kept in header:
+- ✅ Business name text "Bali Express Laundry" (branding)
+- ✅ WhatsApp CTA button "Order Now" / "WhatsApp Us" (main conversion point)
+- ✅ Phone number +62 851-9850-4914 (trust + contact, hidden on mobile)
+
+Files Modified:
+- /src/app/page.tsx (removed ~130 lines of header code)
+
+Benefits:
+- 📱 Cleaner header, less visual clutter
+- 🎯 Single focus: WhatsApp conversion CTA
+- ⚡ Faster page load (no logo image to load)
+- 📊 Better mobile experience (no menu toggle)
+- 😊 Simpler UX: direct path to conversion
+
+Technical Changes:
+- Removed unused state variables (isMobileMenuOpen)
+- Fixed lint errors (set-state-in-render)
+- Switched price calculation to useMemo
+- Removed ~130 lines of unnecessary code
+
+Deployment Status:
+- Committed: b0facd5
+- Pushed: https://github.com/andiprasetyoasus2018-alt/baliexpresslaundry.git
+- Vercel auto-deploying...
+
+Expected Results:
+- Higher conversion rate (single CTA focus)
+- Better UX (cleaner header)
+- Faster page load
+- More space for content
+- Mobile users see full header content
+
+User Philosophy:
+"Less is more - focus only on what matters most for conversion (WhatsApp)"
+
