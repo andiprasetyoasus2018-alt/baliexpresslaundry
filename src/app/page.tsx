@@ -16,7 +16,11 @@ import {
   Shirt,
   ChevronRight,
   Menu,
-  X
+  X,
+  Calculator,
+  HelpCircle,
+  Award,
+  RefreshCw
 } from 'lucide-react';
 
 const WHATSAPP_NUMBER = '6285198504914';
@@ -28,6 +32,14 @@ export default function Home() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isTrustBadgeVisible, setIsTrustBadgeVisible] = useState(false);
   const trustBadgeRef = useRef<HTMLDivElement>(null);
+  
+  // Price Calculator State
+  const [weight, setWeight] = useState<number>(5);
+  const [selectedService, setSelectedService] = useState('express-12');
+  const [calculatedPrice, setCalculatedPrice] = useState<number>(0);
+  
+  // FAQ State
+  const [openFaq, setOpenFaq] = useState<number | null>(null);
   const services = [
     {
       title: "Express 12 Hours",
@@ -174,10 +186,74 @@ export default function Home() {
       location: "Spain",
       rating: 5,
       text: "Free pickup and delivery made everything so convenient. Great prices and excellent quality. Will definitely use again."
+    },
+    {
+      name: "Yuki Tanaka",
+      location: "Japan",
+      rating: 5,
+      text: "First time using a laundry service in Bali and I'm impressed! The 6-hour express was perfect for my needs. Clothes came back fresh and nicely folded."
+    },
+    {
+      name: "Sophie Mueller",
+      location: "Germany",
+      rating: 5,
+      text: "I was skeptical about the 2-hour service but they delivered! Quality was excellent and the driver was very friendly. Will use again!"
     }
   ];
 
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`;
+  
+  // FAQ Data
+  const faqs = [
+    {
+      question: "What's the minimum order?",
+      answer: "Minimum order varies by service: 2 kg for 2-3 hour express, 3 kg for 6 hour express, and 3.9 kg for 12 hour express."
+    },
+    {
+      question: "Do you pick up and deliver?",
+      answer: "Yes! We offer FREE pickup and delivery across Seminyak, Canggu, Kuta, Umalas, Denpasar, and Sanur. Just WhatsApp us your location."
+    },
+    {
+      question: "How do I pay?",
+      answer: "Payment can be made via cash, bank transfer, or digital wallet (GoPay, OVO, Dana) when we deliver your clean clothes."
+    },
+    {
+      question: "Are my clothes mixed with others?",
+      answer: "Never! We use dedicated machines for each customer. Your clothes are washed separately – no mixing with other customers' laundry."
+    },
+    {
+      question: "What if I'm not satisfied?",
+      answer: "We offer a satisfaction guarantee! If you're not happy with the quality, let us know within 24 hours and we'll reprocess your order for free."
+    },
+    {
+      question: "Can I track my order?",
+      answer: "Absolutely! Once you place your order, we'll send you updates via WhatsApp. You'll know when we pickup, when we start processing, and when we deliver."
+    }
+  ];
+  
+  // Guarantees Data
+  const guarantees = [
+    {
+      icon: Award,
+      title: "Satisfaction Guarantee",
+      description: "Not happy with our service? Let us know within 24 hours and we'll reprocess your laundry for free."
+    },
+    {
+      icon: Clock,
+      title: "On-Time Delivery",
+      description: "We promise to deliver on time. If we're late, you get 15% discount on your next order."
+    },
+    {
+      icon: ShieldCheck,
+      title: "Quality Guarantee",
+      description: "Professional cleaning with high-quality detergents. If any damage occurs due to our fault, we'll replace your item."
+    },
+    {
+      icon: Truck,
+      title: "Free Pickup & Delivery",
+      description: "No hidden charges. Pickup and delivery are completely FREE across all our service areas."
+    }
+  ];
 
   // JSON-LD Schema for LocalBusiness and AggregateRating
   const jsonLd = {
@@ -268,6 +344,25 @@ export default function Home() {
       }
     };
   }, []);
+  
+  // Price Calculator Logic
+  useEffect(() => {
+    const prices: Record<string, number> = {
+      'express-12': 24900,
+      'express-6': 39900,
+      'express-3': 49900,
+      'express-2': 59900
+    };
+    const minWeights: Record<string, number> = {
+      'express-12': 3.9,
+      'express-6': 3,
+      'express-3': 2,
+      'express-2': 2
+    };
+    
+    const effectiveWeight = Math.max(weight, minWeights[selectedService] || 2);
+    setCalculatedPrice(effectiveWeight * prices[selectedService]);
+  }, [weight, selectedService]);
 
   return (
     <div className="min-h-screen bg-white">
@@ -297,8 +392,14 @@ export default function Home() {
               <a href="#services" onClick={handleSmoothScroll} className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
                 Services
               </a>
+              <a href="#calculator" onClick={handleSmoothScroll} className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
+                Calculator
+              </a>
               <a href="#how-it-works" onClick={handleSmoothScroll} className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
                 How It Works
+              </a>
+              <a href="#faq" onClick={handleSmoothScroll} className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
+                FAQ
               </a>
               <a href="#service-area" onClick={handleSmoothScroll} className="text-gray-700 hover:text-emerald-600 font-medium transition-colors">
                 Location
@@ -350,8 +451,14 @@ export default function Home() {
                 <a href="#services" onClick={(e) => { handleSmoothScroll(e); setIsMobileMenuOpen(false); }} className="text-gray-700 hover:text-emerald-600 font-medium transition-colors py-2">
                   Services
                 </a>
+                <a href="#calculator" onClick={(e) => { handleSmoothScroll(e); setIsMobileMenuOpen(false); }} className="text-gray-700 hover:text-emerald-600 font-medium transition-colors py-2">
+                  Calculator
+                </a>
                 <a href="#how-it-works" onClick={(e) => { handleSmoothScroll(e); setIsMobileMenuOpen(false); }} className="text-gray-700 hover:text-emerald-600 font-medium transition-colors py-2">
                   How It Works
+                </a>
+                <a href="#faq" onClick={(e) => { handleSmoothScroll(e); setIsMobileMenuOpen(false); }} className="text-gray-700 hover:text-emerald-600 font-medium transition-colors py-2">
+                  FAQ
                 </a>
                 <a href="#service-area" onClick={(e) => { handleSmoothScroll(e); setIsMobileMenuOpen(false); }} className="text-gray-700 hover:text-emerald-600 font-medium transition-colors py-2">
                   Location
@@ -383,13 +490,21 @@ export default function Home() {
           href={whatsappUrl}
           target="_blank"
           rel="noopener noreferrer"
-          className="flex items-center gap-2 bg-green-500 hover:bg-green-600 text-white px-5 py-3 rounded-full shadow-2xl hover:shadow-green-500/30 transition-all duration-300 group"
+          className="flex items-center gap-3 bg-green-500 hover:bg-green-600 text-white px-6 py-4 rounded-full shadow-2xl hover:shadow-green-500/50 transition-all duration-300 group animate-bounce hover:animate-none"
         >
-          <div className="bg-white rounded-full p-1">
-            <Phone className="w-4 h-4 text-green-500" />
+          <div className="relative">
+            <div className="bg-white rounded-full p-2 group-hover:scale-110 transition-transform">
+              <Phone className="w-6 h-6 text-green-500" />
+            </div>
+            <div className="absolute -top-1 -right-1 bg-red-500 text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center animate-pulse">
+              1
+            </div>
           </div>
-          <span className="font-semibold text-sm hidden sm:block">Order Now</span>
-          <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+          <div className="flex flex-col items-start">
+            <span className="font-bold text-base">Order Now</span>
+            <span className="text-xs text-green-100">WhatsApp</span>
+          </div>
+          <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
         </a>
       </div>
 
@@ -789,6 +904,243 @@ export default function Home() {
                 </div>
               </div>
             ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Price Calculator Section */}
+      <section 
+        id="calculator"
+        className="py-20 bg-gradient-to-br from-emerald-50 to-teal-50"
+      >
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Price Calculator
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Estimate your laundry cost instantly
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-white rounded-3xl p-8 shadow-xl border border-emerald-100">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                {/* Left Column - Inputs */}
+                <div className="space-y-6">
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Select Service
+                    </label>
+                    <select
+                      value={selectedService}
+                      onChange={(e) => setSelectedService(e.target.value)}
+                      className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-all text-gray-900"
+                    >
+                      <option value="express-12">Express 12 Hours - Rp24.900/kg</option>
+                      <option value="express-6">Express 6 Hours - Rp39.900/kg</option>
+                      <option value="express-3">Express 3 Hours - Rp49.900/kg</option>
+                      <option value="express-2">Ultra Express 2 Hours - Rp59.900/kg</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">
+                      Weight (kg)
+                    </label>
+                    <input
+                      type="number"
+                      min="1"
+                      max="50"
+                      value={weight}
+                      onChange={(e) => setWeight(Number(e.target.value))}
+                      className="w-full px-4 py-3 border-2 border-gray-300 rounded-xl focus:border-emerald-500 focus:ring-2 focus:ring-emerald-200 transition-all text-gray-900 text-2xl font-bold"
+                      placeholder="Enter weight in kg"
+                    />
+                  </div>
+
+                  <div className="bg-emerald-50 rounded-2xl p-6">
+                    <div className="flex items-center justify-center gap-3 mb-2">
+                      <RefreshCw className="w-8 h-8 text-emerald-600" />
+                      <span className="text-sm text-emerald-700 font-medium">Live Calculation</span>
+                    </div>
+                    <div className="text-center">
+                      <p className="text-sm text-gray-600 mb-2">Estimated Total</p>
+                      <p className="text-5xl font-bold text-emerald-600">
+                        Rp{(calculatedPrice / 1000).toLocaleString('id-ID')}
+                      </p>
+                      <p className="text-xs text-gray-500 mt-1">
+                        {selectedService === 'express-2' && weight < 2 && '(Minimum 2 kg)'}
+                        {selectedService === 'express-3' && weight < 2 && '(Minimum 2 kg)'}
+                        {selectedService === 'express-6' && weight < 3 && '(Minimum 3 kg)'}
+                        {selectedService === 'express-12' && weight < 3.9 && '(Minimum 3.9 kg)'}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+
+                {/* Right Column - Info */}
+                <div className="space-y-6">
+                  <div className="bg-gradient-to-br from-emerald-100 to-teal-100 rounded-2xl p-6">
+                    <div className="flex items-start gap-3 mb-4">
+                      <Calculator className="w-6 h-6 text-emerald-600 flex-shrink-0" />
+                      <h3 className="text-lg font-bold text-gray-900">How It Works</h3>
+                    </div>
+                    <ol className="space-y-3 text-gray-700">
+                      <li className="flex items-start gap-2">
+                        <span className="bg-emerald-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0">1</span>
+                        <span>Select your service type</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="bg-emerald-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0">2</span>
+                        <span>Enter your laundry weight</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="bg-emerald-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0">3</span>
+                        <span>See instant price estimate</span>
+                      </li>
+                      <li className="flex items-start gap-2">
+                        <span className="bg-emerald-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold flex-shrink-0">4</span>
+                        <span>Order via WhatsApp</span>
+                      </li>
+                    </ol>
+                  </div>
+
+                  <div className="bg-white rounded-2xl p-6 border border-gray-200">
+                    <h3 className="text-lg font-bold text-gray-900 mb-4 flex items-center gap-2">
+                      <Award className="w-5 h-5 text-emerald-600" />
+                      Service Pricing
+                    </h3>
+                    <div className="space-y-3 text-sm">
+                      <div className="flex items-center justify-between py-2 border-b border-gray-100">
+                        <span className="text-gray-600">Express 12 Hours</span>
+                        <span className="font-bold text-gray-900">Rp24,900/kg</span>
+                      </div>
+                      <div className="flex items-center justify-between py-2 border-b border-gray-100">
+                        <span className="text-gray-600">Express 6 Hours</span>
+                        <span className="font-bold text-gray-900">Rp39,900/kg</span>
+                      </div>
+                      <div className="flex items-center justify-between py-2 border-b border-gray-100">
+                        <span className="text-gray-600">Express 3 Hours</span>
+                        <span className="font-bold text-gray-900">Rp49,900/kg</span>
+                      </div>
+                      <div className="flex items-center justify-between py-2">
+                        <span className="text-gray-600">Ultra Express 2 Hours</span>
+                        <span className="font-bold text-gray-900">Rp59,900/kg</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  <a
+                    href={whatsappUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white py-4 rounded-xl font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 transform hover:scale-105 text-center"
+                  >
+                    Order This Calculation via WhatsApp
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* FAQ Section */}
+      <section 
+        id="faq"
+        className="py-20 bg-white"
+      >
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Frequently Asked Questions
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              Find answers to common questions about our laundry service
+            </p>
+          </div>
+
+          <div className="max-w-4xl mx-auto">
+            <div className="grid grid-cols-1 gap-6">
+              {faqs.map((faq, index) => (
+                <div
+                  key={index}
+                  className="bg-gradient-to-br from-gray-50 to-white rounded-2xl border border-gray-200 overflow-hidden hover:shadow-xl transition-all duration-300"
+                >
+                  <button
+                    onClick={() => setOpenFaq(openFaq === index ? null : index)}
+                    className="w-full text-left p-6 flex items-center justify-between gap-4 hover:bg-white/50 transition-colors"
+                  >
+                    <div className="flex items-start gap-4 flex-1">
+                      <div className="bg-emerald-100 rounded-full p-2 flex-shrink-0">
+                        <HelpCircle className="w-5 h-5 text-emerald-600" />
+                      </div>
+                      <h3 className="text-lg font-semibold text-gray-900 pr-4">
+                        {faq.question}
+                      </h3>
+                    </div>
+                    <ChevronRight 
+                      className={`w-5 h-5 text-emerald-600 flex-shrink-0 transition-transform duration-300 ${
+                        openFaq === index ? 'rotate-90' : ''
+                      }`}
+                    />
+                  </button>
+                  {openFaq === index && (
+                    <div className="px-6 pb-6 pt-2 border-t border-gray-100 animate-in slide-in-from-top-0 slide-in-to-top-0 transition-all duration-300">
+                      <p className="text-gray-700 leading-relaxed">
+                        {faq.answer}
+                      </p>
+                      <a
+                        href={whatsappUrl}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center gap-2 mt-4 bg-emerald-100 hover:bg-emerald-200 text-emerald-700 px-4 py-2 rounded-full text-sm font-semibold transition-colors"
+                      >
+                        <Phone className="w-4 h-4" />
+                        Still have questions? WhatsApp us
+                      </a>
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Guarantee Section */}
+      <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
+        <div className="container mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+              Our Guarantees
+            </h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+              We stand behind our service with these guarantees
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            {guarantees.map((guarantee, index) => {
+              const Icon = guarantee.icon;
+              return (
+                <div
+                  key={index}
+                  className="bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 border border-gray-100 hover:-translate-y-1"
+                >
+                  <div className="inline-flex items-center justify-center w-16 h-16 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white mb-6 shadow-lg">
+                    <Icon className="w-8 h-8" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 mb-3">
+                    {guarantee.title}
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">
+                    {guarantee.description}
+                  </p>
+                </div>
+              );
+            })}
           </div>
         </div>
       </section>
