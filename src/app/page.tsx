@@ -410,7 +410,7 @@ export default function Home() {
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-black/40" style={{ zIndex: 1 }} />
 
-        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div className="relative container mx-auto px-4 sm:px-6 lg:px-8 py-20 pointer-events-auto" style={{ zIndex: 2 }}>
           <div className="max-w-5xl mx-auto text-center">
             <div 
               ref={trustBadgeRef}
