@@ -9,6 +9,10 @@ const inter = Inter({
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://baliexpresslaundry.vercel.app"),
+  icons: {
+    icon: '/logo.png',
+    apple: '/logo.png',
+  },
   title: "Bali Express Laundry | 2-Hour Express Service in Bali | Free Pickup & Delivery",
   description: "Premium laundry service in Bali with 2-hour express turnaround. Free pickup & delivery across Seminyak, Canggu, Kuta & more. Open 24/7. WhatsApp: +62 851-9850-4914",
   keywords: [

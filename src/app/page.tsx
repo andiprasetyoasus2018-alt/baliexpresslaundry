@@ -179,6 +179,61 @@ export default function Home() {
 
   const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${WHATSAPP_MESSAGE}`;
 
+  // JSON-LD Schema for LocalBusiness and AggregateRating
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'LocalBusiness',
+    name: 'Bali Express Laundry',
+    image: 'https://baliexpresslaundry.vercel.app/logo.png',
+    description: 'Premium laundry service in Bali with 2-hour express turnaround. Free pickup & delivery across Seminyak, Canggu, Kuta & more. Open 24/7.',
+    telephone: '+6285198504914',
+    email: 'info@baliexpresslaundry.vercel.app',
+    url: 'https://baliexpresslaundry.vercel.app',
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: 'Jl. Mertanadi No.92X, Kerobokan Kelod',
+      addressLocality: 'Kec. Kuta Utara',
+      addressRegion: 'Kabupaten Badung',
+      addressCountry: 'ID',
+      postalCode: '80361'
+    },
+    geo: {
+      '@type': 'GeoCoordinates',
+      latitude: -8.6965,
+      longitude: 115.1528
+    },
+    openingHoursSpecification: {
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: [
+        'Monday',
+        'Tuesday',
+        'Wednesday',
+        'Thursday',
+        'Friday',
+        'Saturday',
+        'Sunday'
+      ],
+      opens: '00:00',
+      closes: '23:59'
+    },
+    priceRange: 'Rp24.900 - Rp59.900',
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: '5',
+      reviewCount: '4',
+      bestRating: '5',
+      worstRating: '1'
+    },
+    areaServed: [
+      'Seminyak',
+      'Canggu',
+      'Kuta',
+      'Umalas',
+      'Denpasar',
+      'Sanur'
+    ]
+  };
+
   // Smooth scroll handler
   const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -810,6 +865,12 @@ export default function Home() {
           </div>
         </div>
       </footer>
+
+      {/* JSON-LD Schema for LocalBusiness */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
     </div>
   );
 }
